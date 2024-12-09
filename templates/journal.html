@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1>Health Anxiety Journal</h1>
+    <form method="POST" class="mb-4">
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <label for="date">Date</label>
+                <input type="date" class="form-control" id="date" name="date" required>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label for="trigger">Trigger or Sensation</label>
+                <input type="text" class="form-control" id="trigger" name="trigger" required>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="thought">Catastrophic Thought</label>
+            <textarea class="form-control" id="thought" name="thought" rows="2" required></textarea>
+        </div>
+        <div class="mb-3">
+            <label for="symptoms">Symptoms</label>
+            <textarea class="form-control" id="symptoms" name="symptoms" rows="2"></textarea>
+        </div>
+        <div class="mb-3">
+            <label for="behaviors">Reassurance-Seeking Behaviors</label>
+            <textarea class="form-control" id="behaviors" name="behaviors" rows="2"></textarea>
+        </div>
+        <div class="mb-3">
+            <label for="rational_thought">Rational Thought</label>
+            <textarea class="form-control" id="rational_thought" name="rational_thought" rows="2"></textarea>
+        </div>
+        <div class="mb-3">
+            <label for="coping_actions">Coping Actions</label>
+            <textarea class="form-control" id="coping_actions" name="coping_actions" rows="2"></textarea>
+        </div>
+        <div class="mb-3">
+            <label for="outcome">Outcome</label>
+            <textarea class="form-control" id="outcome" name="outcome" rows="2"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Save Entry</button>
+    </form>
+
+    <h2>Journal Entries</h2>
+    {% for entry in entries %}
+        <div class="card mb-3">
+            <div class="card-body">
+                <h5 class="card-title">{{ entry[1] }}: {{ entry[2] }}</h5>
+                <p class="card-text"><strong>Catastrophic Thought:</strong> {{ entry[3] }}</p>
+                <p class="card-text"><strong>Symptoms:</strong> {{ entry[4] }}</p>
+                <p class="card-text"><strong>Behaviors:</strong> {{ entry[5] }}</p>
+                <p class="card-text"><strong>Rational Thought:</strong> {{ entry[6] }}</p>
+                <p class="card-text"><strong>Coping Actions:</strong> {{ entry[7] }}</p>
+                <p class="card-text"><strong>Outcome:</strong> {{ entry[8] }}</p>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}
