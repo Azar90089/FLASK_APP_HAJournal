@@ -1,4 +1,4 @@
 flask==2.3.2
 gunicorn==21.2.0
 flask-bootstrap==3.3.7.1
-sqlite3==3.39.3  # Optional, as sqlite3 is part of Python's standard library
+sqlite3==3.45.1
