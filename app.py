@@ -37,9 +37,9 @@ def journal():
             conn.execute("INSERT INTO journal (date, trigger, thought, symptoms, behaviors, rational_thought, coping_actions, outcome) VALUES (?, ?, ?, ?, ?, ?, ?, ?)", entry)
         return redirect(url_for("journal"))
 
-    # Display entries
+    # Fetch entries in date order
     with sqlite3.connect("data/journal.db") as conn:
-        entries = conn.execute("SELECT * FROM journal").fetchall()
+        entries = conn.execute("SELECT * FROM journal ORDER BY date DESC").fetchall()  # DESC for newest first, ASC for oldest first
     return render_template("journal.html", entries=entries)
 
 if __name__ == "__main__":
